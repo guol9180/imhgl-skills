@@ -1,6 +1,6 @@
 ---
 name: init-project-docs
-description: 新建开发项目时统一创建 README.md（项目熟悉）、AGENTS.md（开发规范）、DEVELOP_PLAN.md（计划与验收）三个文档，严格分类、交叉引用、禁止冗余。Use when initializing a new dev project, or when project docs are missing / being restructured.
+description: 新建开发项目时统一创建 README.md（项目熟悉）、AGENTS.md（开发规范）、DEVELOP_PLAN.md（计划与验收）三个文档，严格分类、交叉引用、禁止冗余；AGENTS.md 必建三条通用规范（PowerShell 7 终端 / 复用优先不过度设计 / 文档同步）。Use when initializing a new dev project, or when project docs are missing / being restructured.
 ---
 
 # 初始化项目文档（三件套）
@@ -48,6 +48,26 @@ description: 新建开发项目时统一创建 README.md（项目熟悉）、AGE
 - 一条信息在多处出现即视为冗余缺陷：修订时只改归属文件，引用处自动生效
 - 临时讨论、单次决策过程不进三文档；结论若需长期遵守，归入 AGENTS；若是任务范畴，归入 DEVELOP_PLAN 对应条目
 
+## AGENTS.md 必建三条（强制）
+
+初始化 `AGENTS.md` 时，无论项目类型，以下三条通用规范**必须写入**「通用规范」小节；可按项目情况追加细节，但不可删减：
+
+| # | 规范 | 执行要求 |
+|---|---|---|
+| 1 | **终端统一 PowerShell 7** | 所有终端命令在 PowerShell 7（`pwsh`）中执行；开工前检测本机是否已安装（`pwsh --version`），未安装则**提示用户安装后再继续**，不以旧版 PowerShell 静默替代 |
+| 2 | **复用优先，不过度设计** | 同一逻辑或结构出现**第二份**副本时，立即抽取为公共函数 / 公共样式 / 公共组件；前端页面表现优先组件化；保证代码质量（可读、可测、可维护）；只为已发生的重复做抽象，不为假想的未来需求预先设计 |
+| 3 | **文档同步更新** | 每次开发结束或提交之前，同步更新三份文档：README.md（结构与用法变化）、AGENTS.md（规范变化）、DEVELOP_PLAN.md（任务状态与验收清单）；**文档与代码不同步视为任务未完成** |
+
+写入 AGENTS.md 时使用以下标准条目（此为唯一权威来源，README / DEVELOP_PLAN 需要提及这三条时一律引用本文件）：
+
+```markdown
+## 通用规范（必建三条）
+
+1. **终端统一 PowerShell 7**：所有终端命令使用 PowerShell 7（pwsh）执行；本机未安装时提示用户安装后再继续，不以旧版 PowerShell 替代。
+2. **复用优先，不过度设计**：同一逻辑或结构出现第二份副本时，立即抽取为公共函数 / 公共样式 / 公共组件；前端页面表现优先组件化；保证代码质量，不为假想的未来需求预先抽象。
+3. **文档同步**：每次开发结束或提交之前，同步更新 README.md、AGENTS.md、DEVELOP_PLAN.md；文档与代码不同步视为任务未完成。
+```
+
 ## 最小骨架
 
 初始化时创建三个文件，只填已知信息，未知项留 `TODO`：
@@ -67,6 +87,8 @@ description: 新建开发项目时统一创建 README.md（项目熟悉）、AGE
 ```markdown
 <!-- AGENTS.md -->
 # 开发规范
+## 通用规范（必建三条）
+<原样写入上方「必建三条」标准条目，不可删减>
 ## 目录约定
 ## 代码风格
 ## 流程要求（分支 / 提交 / 测试 / 验证）
@@ -87,5 +109,6 @@ description: 新建开发项目时统一创建 README.md（项目熟悉）、AGE
 ## 执行步骤
 
 1. 按最小骨架创建 `README.md`、`AGENTS.md`、`DEVELOP_PLAN.md`
-2. 填入当前已知信息，未确定项写 `TODO`，不编造
-3. 自检两条：① 逐条核对内容是否写在归属文件（对照分类规则表）；② 检索是否存在重复内容，有则删掉副本改为引用
+2. 在 `AGENTS.md`「通用规范」小节原样写入必建三条标准条目
+3. 填入当前已知信息，未确定项写 `TODO`，不编造
+4. 自检三条：① `AGENTS.md` 包含完整的必建三条；② 逐条核对内容是否写在归属文件（对照分类规则表）；③ 检索是否存在重复内容，有则删掉副本改为引用
