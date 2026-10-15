@@ -1,4 +1,4 @@
-# MyKnowledgeBase · 个人 Skills 知识库
+# imhgl-skills · 个人 Skills 知识库
 
 ## 仓库定位
 
@@ -18,13 +18,13 @@
 
 ```bash
 # 克隆（或下载解压）后，将各 skill 目录复制到全局 skills 目录
-git clone https://github.com/guol9180/MyKnowledgeBase.git
+git clone https://github.com/guol9180/imhgl-skills.git
 
 # Windows (PowerShell)
-Copy-Item MyKnowledgeBase\* "$env:USERPROFILE\.agents\skills\" -Recurse -Force
+Copy-Item imhgl-skills\* "$env:USERPROFILE\.agents\skills\" -Recurse -Force
 
 # macOS / Linux
-cp -r MyKnowledgeBase/*/ ~/.agents/skills/
+cp -r imhgl-skills/*/ ~/.agents/skills/
 ```
 
 > 说明：`README.md` 是仓库说明而非 skill（无 frontmatter），复制与否均无影响；各 skill 目录才是生效单元。
