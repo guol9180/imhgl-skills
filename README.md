@@ -56,6 +56,18 @@ cp -r imhgl-skills/*/ ~/.agents/skills/
 
 ## 维护约定
 
-- **新增 skill**：在仓库根目录新建 `<skill-name>/SKILL.md`（YAML frontmatter 含 `name`、`description`），并同步更新上表
+- **新增 skill**：必须按照 [OpenAI Agent Skills 官方规范](https://developers.openai.com/codex/skills) 创建，具体要求见下方「新增 skill 规范（OpenAI 标准）」；创建后同步更新上表
 - **经验迭代**：使用中发现的问题与改进，直接修订对应 skill 后提交；跨 skill 的通用经验可新建 skill 沉淀
 - **命名规范**：目录名与 `name` 字段一致，kebab-case，动宾或领域短语
+
+## 新增 skill 规范（OpenAI 标准）
+
+新增或重写 skill 时逐项对照以下规则（源自 OpenAI Agent Skills 官方指南）：
+
+1. **目录结构**：一个 skill 一个目录；`SKILL.md` 必需，YAML frontmatter 必含 `name`、`description`；可选 `scripts/`（可执行脚本）、`references/`（详细资料）、`assets/`（模板资源）
+2. **description 写法**：简洁、触发场景前置，写明**何时该用**与**何时不该用**（边界声明）；关键用例与触发词放最前——Agent 初始仅加载 name + description（配额约为上下文窗口的 2% / 8000 字符），描述可能被截断，前置触发词保证截断后仍可匹配
+3. **单一职责**：一个 skill 只专注一件事；多个 skill 覆盖相邻领域时，须在各自 description 中互相划界（如 frontend-design 与 design-taste-frontend）
+4. **指令优先于脚本**：优先用指令描述做法；仅当需要确定性行为或调用外部工具时才写脚本
+5. **命令式步骤**：SKILL.md 正文写成有明确输入与输出的命令式步骤，不写散文式泛论
+6. **渐进披露**：SKILL.md 保持精简，详细资料（长流程、参考文档、示例）放入 `references/`，用到时再读，不堆进主文件
+7. **触发测试**：入库前用典型提示词实测——该触发的任务必须触发、不该触发的任务不得误触发；不达标先改 description 再入库
