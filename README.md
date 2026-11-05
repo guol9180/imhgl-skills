@@ -33,28 +33,26 @@ cp -r imhgl-skills/*/ ~/.agents/skills/
 
 | Skill | 用途 | 来源 |
 |---|---|---|
-| [init-project-docs](./init-project-docs/SKILL.md) | 新建开发项目时统一创建 README / AGENTS / DEVELOP_PLAN 三文档 | 自研 |
-| [executing-plans](./executing-plans/SKILL.md) | 作为执行者按实现计划落地任务 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [writing-plans](./writing-plans/SKILL.md) | 有规格 / 需求后，动手写代码前先写实现计划 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [test-driven-development](./test-driven-development/SKILL.md) | 测试驱动开发流程 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [systematic-debugging](./systematic-debugging/SKILL.md) | 遇到 bug / 测试失败的系统化排查 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [verification-before-completion](./verification-before-completion/SKILL.md) | 声称完成 / 通过之前先运行验证 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [requesting-code-review](./requesting-code-review/SKILL.md) | 完成功能后请求代码评审 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
+| [init-project-docs](./init-project-docs/SKILL.md) | 新建项目时统一创建 README / AGENTS / DEVELOP_PLAN 三文档（AGENTS 必建四条通用规范） | 自研 |
+| [tdd](./tdd/SKILL.md) | 测试驱动开发（red-green-refactor、集成测试） | [mattpocock/skills](https://github.com/mattpocock/skills) · MIT |
+| [diagnosing-bugs](./diagnosing-bugs/SKILL.md) | 疑难 bug 与性能退化的诊断循环 | [mattpocock/skills](https://github.com/mattpocock/skills) · MIT |
+| [grilling](./grilling/SKILL.md) | 对方案 / 决策进行高压追问与压力测试 | [mattpocock/skills](https://github.com/mattpocock/skills) · MIT |
+| [teach](./teach/SKILL.md) | 在当前工作区内教用户新技能或概念 | [mattpocock/skills](https://github.com/mattpocock/skills) · MIT |
+| [design-taste-frontend](./design-taste-frontend/SKILL.md) | 落地页 / 作品集 / 改版的反模板化前端实现 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) · MIT |
+| [frontend-design](./frontend-design/SKILL.md) | 新建 UI / 改版时的视觉设计与美学方向指导 | [anthropics/skills](https://github.com/anthropics/skills) · Apache 2.0 |
 | [receiving-code-review](./receiving-code-review/SKILL.md) | 收到评审意见后的严谨处理 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [finishing-a-development-branch](./finishing-a-development-branch/SKILL.md) | 实现完成后决定分支集成方式 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [using-git-worktrees](./using-git-worktrees/SKILL.md) | 用 git worktree 隔离特性开发 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
-| [frontend-design](./frontend-design/SKILL.md) | 构建新 UI / 改版时的视觉设计指导 | [anthropics/skills](https://github.com/anthropics/skills) · Apache 2.0 |
-| [mcp-builder](./mcp-builder/SKILL.md) | 创建高质量 MCP（Model Context Protocol）服务器 | [anthropics/skills](https://github.com/anthropics/skills) · Apache 2.0 |
+| [verification-before-completion](./verification-before-completion/SKILL.md) | 声称完成 / 通过之前先运行验证 | [obra/superpowers](https://github.com/obra/superpowers) · MIT |
 
 ## 第三方 skill 引入规范
 
 除 `init-project-docs` 外，其余 skills 均借鉴自上游开源项目（见上表来源列）。**引入新 skill 或同步上游更新时**，必须逐项过一遍以下审查清单：
 
 1. **去除单一 agent 绑定**：删除或改写绑定特定 agent 产品的表述（专有 CLI 名称、专有工作流、特定产品提示语等），改写为通用 agent 指令；只剥离绑定，不改动原 skill 的方法论
-2. **去除上游命名空间**：`superpowers:` 之类的项目前缀一律去除，改为本仓库内的平铺 skill 名引用；若引用的本仓库未收录的上游 skill（如 `subagent-driven-development`、`writing-skills`），保留原名并在首次出现处注明「上游 skill，本仓库未收录」
-3. **保留许可证**：上游 `LICENSE.txt` 原样保留，各 skill 目录内的版权声明不得删除
+2. **去除上游命名空间**：`superpowers:` 之类的项目前缀一律去除，改为本仓库内的平铺 skill 名引用；若引用的本仓库未收录的上游 skill，保留原名并在首次出现处注明「上游 skill，本仓库未收录」
+3. **保留许可证**：上游随 skill 携带的 `LICENSE.txt` 原样保留；上游许可证仅在仓库根时（如 mattpocock/skills、Leonxlnx/taste-skill），将仓库根 LICENSE 原文复制为该 skill 的 `LICENSE.txt`，版权声明不得删除或改写
 4. **结构对齐本仓库规范**：目录名 = frontmatter `name`（kebab-case），必须含 `SKILL.md`
 5. **登记来源**：在上表「来源」列登记上游仓库与许可证；同步上游新版本时先 diff 上游变更，再按本清单重新过一遍
+6. **保留本地 description**：本仓库 skill 的 `description` 已按官方标准本地化迭代（触发场景前置 + 边界声明）；同步上游新版本时只合并正文变更，保留本地 description，冲突时以本地为准并复核触发准确性
 
 ## 维护约定
 

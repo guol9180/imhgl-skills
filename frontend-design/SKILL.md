@@ -1,6 +1,7 @@
 ---
 name: frontend-design
-description: Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+description: Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults. Not for copy tweaks or small functional edits.
+license: Complete terms in LICENSE.txt
 ---
 
 # Frontend Design
@@ -35,7 +36,7 @@ Consider written content carefully. Often a design brief may not contain real co
 ## Process: plan, review against the brief, build, critique
 
 For calibration, AI-generated design right now clusters around some traits:
-1. a warm cream background (near #F4F1EA) with a high-contrast serif display and a terracotta or warm-clay accent (often near #D97757 — the signature terracotta accent of well-known AI chat products, so on a user's brief it reads as a tell);
+1. a warm cream background (near #F4F1EA) with a high-contrast serif display and a terracotta or warm-clay accent (often near #D97757 — Anthropic's own Claude-interaction accent, so on a user's brief it reads as a tell);
 2. a near-black background with a single bright acid-green or vermilion accent;
 3. a broadsheet-style layout with hairline rules, zero border-radius, and dense newspaper-like columns;
 4. the SaaS-card kit: content chopped into identical rounded cards, one border-radius on everything regardless of hierarchy, the same soft grey shadow (rgba(0,0,0,.1)) under each, and gradient washes as decoration;
