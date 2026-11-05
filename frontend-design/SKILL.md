@@ -12,6 +12,12 @@ Approach this as the design lead at a design studio known for giving every clien
 
 If the brief does not identify what the product or subject matter is, identify it yourself before designing, and confirm with the client. You can come up with one concrete subject, the design's audience, and the design's primary job, as a proposal. If there's any information in your memory about the client's preferences or context about what they're building, use that as a hint. The subject's industry, subject matter, materials, and vernacular are where distinctive visual choices come from — a design for a toy for girls aged 8–11 will be very aesthetically different from a dashboard for financial analysts. Build with the brief's real content and subject matter throughout.
 
+## Resolve the visual direction yourself
+
+Converging work needs one committed direction before the build starts. Resolve it in priority order: an explicit direction pinned by the brief, then the subject matter's own vernacular (industry, materials, audience), then your best judgment from the brief. State the chosen direction in one line and lock onto it — every later choice (tokens, type, layout) is checked against that line.
+
+Do not offer the user a menu of visual directions to pick from, and do not ask "which of these feels right?": asking spends the user's turn on a decision they hired you to make. Asking about the subject (what the product is, who it serves) is fine; asking about direction, once it is inferable, is not.
+
 ## Design principles
 
 For web designs, the hero is the first thing viewers will see. Open with the most characteristic thing in the subject's world, in the form that is most appropriate: a headline, an image, an animation, a live demo, an interactive moment, or other treatments. Be deliberate with your choice: a big number with a small label, supporting stats, and a gradient accent is the default treatment, so only use it if that's truly the best option.

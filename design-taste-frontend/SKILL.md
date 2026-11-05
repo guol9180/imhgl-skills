@@ -1,6 +1,6 @@
 ---
 name: design-taste-frontend
-description: Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check.
+description: Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict scored pre-flight loop.
 ---
 
 # tasteskill: Anti-Slop Frontend Skill
@@ -30,8 +30,10 @@ Example reads:
 - *"Reading this as: solo designer portfolio for hiring managers, with an editorial / kinetic-type language, leaning toward native CSS + scroll-driven animation + custom typography."*
 - *"Reading this as: redesign of a public-sector service site, with a trust-first language, leaning toward GOV.UK Frontend or USWDS."*
 
+This read is a commitment, not a proposal: once stated, build against it — tokens, type, and layout are checked against this line. Never present a menu of directions for the user to pick from.
+
 ### 0.C If the brief is ambiguous, ask one question, do not guess
-Ask exactly **one** clarifying question - never a multi-question dump - and only when the design read genuinely diverges. Example: *"Should this feel closer to Linear-clean or Awwwards-experimental?"*
+Ask exactly **one** clarifying question - never a multi-question dump - and only when the design read genuinely diverges. Ask about the subject or purpose (who it serves, what it must achieve), not about visual direction: the direction call is part of the job once the read is inferable. Example: *"Is the primary audience hiring managers or end clients?"*
 
 If you can confidently infer from context, **do not ask**. Just declare the design read and proceed.
 
@@ -976,7 +978,21 @@ Run this matrix before outputting code. This is the last filter.
 - [ ] **Core Web Vitals** plausibly hit (LCP < 2.5s, INP < 200ms, CLS < 0.1)?
 - [ ] **One design system** per project (no Material + shadcn mixed)?
 
-If a single checkbox cannot be honestly ticked, the page is not done. Fix it before delivering.
+If a single checkbox cannot be honestly ticked, the page is not done.
+
+### 14.1 Scored convergence loop
+
+The checklist above runs as a scored review, not a single pass. Score each dimension 1-5 independently — a strength in one never excuses a failure in another:
+
+| Dimension | Covers |
+|---|---|
+| **Craft** | Layout, hierarchy, spacing, alignment, rhythm — deliberate work, not a template with words swapped |
+| **Brief fit** | Does it solve the user's stated problem? Attack the weakest claim first |
+| **System consistency** | Tokens, type, accent, radius, theme lock — one system, no drift |
+| **Accessibility** | Contrast, focus, keyboard, labels, heading order |
+| **Copy** | Specific, readable, no filler; placeholder phrasing counts as a defect |
+
+Convergence rule: any dimension below 4 → fix **all** failing checklist items → re-run the full matrix from the top. Repeat at most 3 rounds. If a dimension still scores below 4 after round 3, deliver with an explicit residual-defects list naming what failed and why — never claim the matrix passed when it did not.
 
 ---
 
